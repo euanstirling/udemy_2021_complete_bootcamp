@@ -43,5 +43,5 @@ print(mystring_3[::3])
 # * Combine with a range and step size
 print(mystring_3[2:7:2])
 
-# * Reversing a string order
+# * Reversing a string order. Start at the beginning to the end but run backwards
 print(mystring_3[::-1])

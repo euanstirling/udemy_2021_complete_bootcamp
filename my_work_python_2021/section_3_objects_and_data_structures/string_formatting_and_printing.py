@@ -1,6 +1,8 @@
 
 #! STRING FORMATTING AND PRINTING
 
+# todo LOOK AT PRINT FORMATING NOTEBOOK
+
 # * To 'inject' a variable in to a string the simplest way in concatination
 
 my_name = "jose"
