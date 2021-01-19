@@ -32,7 +32,7 @@ d = {"k1": "123", "k2": [0, 1, 2], "k3": {"insideKey": 100}}
 # * Get the list at k2
 print(d["k2"])
 
-# * Print the value of the insideKey. A dictionary inside a dictionary. Add another sqaure bracket to get to the next level within the dictionary (stcking index or key calls)
+# * Print the value of the insideKey. A dictionary inside a dictionary. Add another sqaure bracket to get to the next level within the dictionary (stacking index or key calls)
 print(d["k3"]["insideKey"])
 
 # * Print the 2 from the list
