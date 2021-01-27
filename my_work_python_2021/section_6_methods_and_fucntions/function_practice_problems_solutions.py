@@ -1,7 +1,8 @@
 
 #! Function Practice problems - solutions
 
-#! WARM UP PROLEMS
+#! WARM UP PROBLEMS
+
 # todo LESSER OF TWO EVENS: Write a function that returns the lesser of two given numbers if both numbers are even, but returns the greater if one or both numbers are odd
 
 # lesser_of_two_evens(2,4) --> 2
@@ -201,3 +202,170 @@ print(almost_there(90))
 print(almost_there(104))
 print(almost_there(150))
 print(almost_there(209))
+
+#! LEVEL TWO PROBLEMS
+
+# todo FIND 33:
+
+# Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+
+# has_33([1, 3, 3]) → True
+# has_33([1, 3, 1, 3]) → False
+# has_33([3, 1, 3]) → False
+
+
+def has_33(nums):
+    for i in range(0, len(nums)-1):
+        if nums[i] == 3 and nums[i+1] == 3:
+            return True
+
+    return False
+
+
+print(has_33([1, 3, 3]))
+print(has_33([1, 3, 1, 3]))
+print(has_33([3, 1, 3]))
+
+
+# todo PAPER DOLL: Given a string, return a string where for every character in the original there are three characters
+
+# paper_doll('Hello') --> 'HHHeeellllllooo'
+# paper_doll('Mississippi') --> 'MMMiiissssssiiippppppiii'
+
+def paper_doll(text):
+    result = ""
+
+    for char in text:
+        result += char*3
+    return result
+
+
+print(paper_doll('Mississippi'))
+print(paper_doll('Hello'))
+
+
+# todo BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+
+# blackjack(5,6,7) --> 18
+# blackjack(9,9,9) --> 'BUST'
+# blackjack(9,9,11) --> 19
+
+def blackjack(a, b, c):
+    if sum([a, b, c]) <= 21:
+        return sum([a, b, c])
+    elif 11 in [a, b, c] and sum([a, b, c]) <= 31:
+        return sum([a, b, c])-10
+    else:
+        return "BUST"
+
+
+print(blackjack(5, 6, 7))
+print(blackjack(9, 9, 9))
+print(blackjack(9, 9, 11))
+
+
+# todo SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
+
+# summer_69([1, 3, 5]) --> 9
+# summer_69([4, 5, 6, 7, 8, 9]) --> 9
+# summer_69([2, 1, 6, 9, 11]) --> 14
+
+def summer_69(arr):
+    total = 0
+    add = True
+
+    for num in arr:
+        while add:
+            if num != 6:
+                total += num
+                break
+            else:
+                add = False
+        while not add:
+            if num != 9:
+                break
+            else:
+                add = True
+                break
+
+    return total
+
+
+print(summer_69([1, 3, 5]))
+print(summer_69([4, 5, 6, 7, 8, 9]))
+print(summer_69([2, 1, 6, 9, 11]))
+
+
+#! CHALLENGING PROBLEMS
+
+# todo  SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+
+#  spy_game([1,2,4,0,0,7,5]) --> True
+#  spy_game([1,0,2,4,0,5,7]) --> True
+#  spy_game([1,7,2,0,4,5,0]) --> False
+
+def spy_game(nums):
+    # we create a list with the numbers 0,0,7 and a string "x"
+    code = [0, 0, 7, "x"]
+    # the loop looks for the 3 numbers and if number is present, we remove it form the list CODE
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)
+    # if all 3 numbers were present, the list CODE should only contain the "x" string and return 1 (True)
+    return len(code) == 1
+
+
+print(spy_game([1, 2, 4, 0, 0, 7, 5]))
+print(spy_game([1, 0, 2, 4, 0, 5, 7]))
+print(spy_game([1, 7, 2, 0, 4, 5, 0]))
+
+
+# todo COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
+
+# count_primes(100) --> 25
+# By convention, 0 and 1 are not prime.
+
+def count_primes(num):
+    # check for 0 and 1 input
+    if num < 2:
+        return 0
+    ##########################
+    # 2 or greater number
+    ##########################
+
+    # Store our prime numbers
+    primes = [2]
+    # Counter going up to input number
+    x = 3
+    # x is going through every number up to input number
+    while x <= num:
+        # check if x is prime
+        for y in range(3, x, 2):
+            if x % y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+
+
+count_primes(100)
+
+
+# todo PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
+
+# print_big('a')
+
+# out: *
+#       * *
+#      *****
+#      *   *
+#      *   *
+# HINT: Consider making a dictionary of possible patterns, and mapping the alphabet to specific 5-line combinations of patterns.
+# For purposes of this exercise, it's ok if your dictionary stops at "E".
+
+def print_big(letter):
+
+
+print(print_big(letter))
